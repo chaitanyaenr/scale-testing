@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: collectd-config
 data:
-  host: 
-  prefix: 
-  interval: 
+  host: " " 
+  prefix: " "
+  interval: " "
