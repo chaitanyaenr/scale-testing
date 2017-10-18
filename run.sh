@@ -1,8 +1,8 @@
 #!/bin/sh
 
 scale_testing_dir=/root/scale-testing
-controller_name=controller
-controllers="$(docker ps -a --filter name=controller --format '{{.ID}}')"
+controller_name=pbench-controller
+controllers="$(docker ps -a --filter name=pbench-controller --format '{{.ID}}')"
 docker_complete_message="OCP SCALE TEST COMPLETE"
 docker_fail_message="OCP SCALE TEST FAILED"
 
