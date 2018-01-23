@@ -3,10 +3,4 @@ kind: Namespace
 metadata:
   annotations:
     openshift.io/node-selector: ""
-    openshift.io/sa.initialized-roles: "true"
-    openshift.io/description: ""
   name: pbench
-spec:
-  finalizers:
-  - kubernetes
-  - openshift.io/origin
