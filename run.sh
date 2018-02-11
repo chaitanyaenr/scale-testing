@@ -24,12 +24,12 @@ if test "$controllers" ; then
 fi
 
 docker_id=$(docker run -t -d --name="$controller_name" --net=host --privileged \
-  -v /var/lib/pbench-agent:/var/lib/pbench-agent \
+#  -v /var/lib/pbench-agent:/var/lib/pbench-agent \
   -v $scale_testing_dir/results:/var/lib/pbench-agent \
   -v $scale_testing_dir/inventory:/root/inventory \
   -v $scale_testing_dir/vars:/root/vars \
   -v $scale_testing_dir/keys:/root/.ssh \
-  -v $scale_testing_dir/benchmark.sh:/root/benchmark.sh pbench-controller
+  -v $scale_testing_dir/benchmark.sh:/root/benchmark.sh pbench-controller)
 
 #test "$docker_id" && docker logs -f $docker_id
 test "$docker_id" || exit 1

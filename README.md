@@ -18,18 +18,13 @@ $ docker tag ravielluri/image:agent pbench-agent:latest
 $ oc label node <node> type=pbench
 ```
 
-### create a service account and add it to the privileged scc
-```
-$ oc create serviceaccount useroot
-$ oc adm policy add-scc-to-user privileged -z useroot
-```
+### Create pbench pods
+```   
+$ cd /root/svt/ci/tooling
+$ ./setup_tooling.sh
+```   
 
-### create pbench-agent pods and patch it
-```
-$ oc create -f /root/scale-testing/openshift-templates/pbench-agent-daemonset.yml
-$ oc patch daemonset pbench-agent --patch \ '{"spec":{"template":{"spec":{"serviceAccountName": "useroot"}}}}'
-```
-
+## Collectd
 ### create a configmap to feed credentials to the collectd pod
 ```
 $ oc create -f /root/scale-testing/openshift-templates/collectd-config.yml
