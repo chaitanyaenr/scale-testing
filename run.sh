@@ -23,10 +23,14 @@ if test "$controllers" ; then
   docker rm -f "$controllers"
 fi
 
+# Copy the golang clusterloader extended.test binary to scale-tesing dir
+cp /usr/libexec/atomic-openshift/extended.test $scale_testing_dir
+
 docker_id=$(docker run -t -d --name="$controller_name" --net=host --privileged \
   -v $scale_testing_dir/results:/var/lib/pbench-agent \
   -v $scale_testing_dir/inventory:/root/inventory \
   -v $scale_testing_dir/vars:/root/vars \
+  -v $scale_testing_dir/extended.test:/usr/libexec/atomic-openshift/extended.test \
   -v $scale_testing_dir/keys:/root/.ssh \
   -v $scale_testing_dir/benchmark.sh:/root/benchmark.sh pbench-controller)
 
