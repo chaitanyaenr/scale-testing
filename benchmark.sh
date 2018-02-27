@@ -9,7 +9,8 @@ cd /root/svt/openshift_scalability
 
 # nodeVertical
 if [[ "${benchmark_type}" == "nodeVertical" || "${benchmark_type}" == "nodevertical" ]]; then
-	pbench-user-benchmark -C nodeVert -- ./nodeVertical.sh nodeVert python
+	pbench-user-benchmark -C nodeVert -- ./nodeVertical.sh nodeVert golang
+	#pbench-user-benchmark -C nodeVert -- ./nodeVertical.sh nodeVert python
         #./cluster-loader.py -avf config/nodeVertical.yaml
 # http
 elif [[ "${benchmark_type}" == "http" ]]; then
@@ -17,8 +18,9 @@ elif [[ "${benchmark_type}" == "http" ]]; then
         ./cluster-loader.py -vaf config/stress-mb.yaml
 #master-Vertical
 elif [[ "${benchmark_type}" == "masterVertical" ]] || [[ "${benchmark_type}" == "mastervertical" ]]; then
+	pbench-user-benchmark -C masterVert -- ./masterVertical.sh golang
 	# pbench-user-benchmark -C masterVert -- ./masterVertical.sh
-	./masterVertical.sh
+	#./masterVertical.sh
 elif [[ "${benchmark_type}" == "test" ]]; then
         pbench-user-benchmark -- sleep 30
 fi
